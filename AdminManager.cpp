@@ -2,6 +2,7 @@
 #include "EmployeeManager.h"
 #include "FilesHelper.h"
 #include "FileManager.h"
+#include "ClientManger.h"
 
 void AdminManager::printAdminMenu() {
 	cout << "================ADMIN MENU===================\n\n";
@@ -22,22 +23,9 @@ void AdminManager::printAdminMenu() {
 }
 
 void AdminManager::updatePassword(Admin* admin) {
-	cout << "==============Update Password===============\n";
-	string password;
-	cout << "Enter your password :";
-	cin >> ws;
-	getline(cin, password);
-	while (password != admin->getPassword()) {
-		cout << "Incorrect password ,Please try again .\n";
-		cout << "Enter your password :";
-		getline(cin, password);
-	}
-	cout << "Enter the new password :";
-	getline(cin, password);
-	admin->setPassword(password);
+	ClientManger::updatePassword(admin);
 	FileManager fm;
 	fm.updateAdmin();
-	cout << "Password updated successfully.\n";
 }
 
 void AdminManager::newEmployee(Admin* admin) {

@@ -60,13 +60,13 @@
 	}
 	void Client::checkBalance() {
 		cout << "\n\n";
-		cout << "BALANCE : " << balance << "\n";
 		cout << "==============================\n";
+		cout << "BALANCE : " << balance << "\n";
 
 	}
 	void Client::DisplayInfo() {
 		Person::DisplayInfo();
-		cout << "Balance   : " << balance << "\n";
+		cout << "Balance   : " << balance << " EGP\n";
 		cout << "==============================\n";
 
 	}

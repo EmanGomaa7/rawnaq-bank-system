@@ -16,30 +16,21 @@ void ClientManger::printClientMenu(){
 }
 void ClientManger::updatePassword(Person* person){
 	cout << "==============Update Password===============\n";
-
-	for (int i = 0; i < FilesHelper::Clients.size();i++) {
-		if (person->getId() == FilesHelper::Clients[i].getId()) {
-			string password;
-			cout << "Enter your password :";
-			cin.ignore();getline(cin, password);
-			while (password != person->getPassword()) {
-				cout << "Incorrect password ,Please try again .\n";
-				cout << "Enter your password :";
-				getline(cin, password);
-			}
-			
-			cout << "Enter the new password :";
-			getline(cin, password);
-			FilesHelper::Clients[i].setPassword(password);
-			cout << "Password updated successfully.\n";
-			FileManager fm;
-			fm.updateClient();
-			return;
-		}
+	string password;
+	cout << "Enter your password :";
+	cin >> ws;
+	getline(cin, password);
+	while (password != person->getPassword()) {
+		cout << "Incorrect password ,Please try again .\n";
+		cout << "Enter your password :";
+		getline(cin, password);
 	}
-	cout << "No client found with this ID.\n";
-	ClientManger::printClientMenu();
-	return;
+	cout << "Enter the new password :";
+	getline(cin, password);
+	person->setPassword(password);
+	
+	cout << "Password updated successfully.\n";
+
 }
 Client* ClientManger::login(int id, string password){
 		if (id > 0 && id <= FilesHelper::Clients.size() && password == FilesHelper::Clients[id-1].getPassword()) {
@@ -89,6 +80,8 @@ bool ClientManger::clientOptions(Client* client){
 	}
 	case 5: {
 		updatePassword(client);
+		FileManager fm;
+	   fm.updateClient();
 		break;
 	}
 	case 6: {

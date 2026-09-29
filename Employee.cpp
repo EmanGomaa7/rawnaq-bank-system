@@ -26,7 +26,7 @@
 
     void Employee::DisplayInfo()  {
         Person::DisplayInfo();
-        cout << "Salary    : " << salary << "\n";
+        cout << "Salary    : " << salary << " EGP\n";
         cout << "==============================\n";
     }
 

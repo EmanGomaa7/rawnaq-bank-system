@@ -15,22 +15,9 @@ void EmployeeManager::printEmployeeMenu() {
 }
 
 void EmployeeManager::updatePassword(Employee* employee) {
-	cout << "==============Update Password===============\n";
-	string password;
-	cout << "Enter your password :";
-	cin >> ws;
-	getline(cin, password);
-	while (password != employee->getPassword()) {
-		cout << "Incorrect password ,Please try again .\n";
-		cout << "Enter your password :";
-		getline(cin, password);
-	}
-	cout << "Enter the new password :";
-	getline(cin, password);
-	employee->setPassword(password);
+	ClientManger::updatePassword(employee);
 	FileManager fm;
 	fm.updateEmployee();
-	cout << "Password updated successfully.\n";
 }
 
 void EmployeeManager::newClient(Employee* employee) {
